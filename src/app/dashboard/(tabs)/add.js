@@ -1,67 +1,68 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { useTheme } from '../theme';  // Import the useTheme hook
 
 const Add = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [rate, setRate] = useState('');
+  const { isDarkMode, colors } = useTheme();  // Access dark mode state and colors
 
   const handlePost = () => {
-    // Handle the post logic (e.g., storing the project details)
     console.log('Project Posted:', { title, description, rate });
-    // Reset fields after posting
     setTitle('');
     setDescription('');
     setRate('');
   };
 
   const handleSaveDraft = () => {
-    // Handle saving the draft logic
     console.log('Project Saved as Draft:', { title, description, rate });
-    // Reset fields after saving as draft
     setTitle('');
     setDescription('');
     setRate('');
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Add Project Idea</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.title, { color: colors.text }]}>Add Project Idea</Text>
 
-      <Text style={styles.label}>Project Title</Text>
+      <Text style={[styles.label, { color: colors.text }]}>Project Title</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, { backgroundColor: colors.card, color: colors.text }]}
         placeholder="Enter project title"
         value={title}
         onChangeText={setTitle}
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
       />
 
-      <Text style={styles.label}>Project Description</Text>
+      <Text style={[styles.label, { color: colors.text }]}>Project Description</Text>
       <TextInput
-        style={[styles.input, styles.textArea]}
+        style={[styles.input, styles.textArea, { backgroundColor: colors.card, color: colors.text }]}
         placeholder="Enter project description"
         value={description}
         onChangeText={setDescription}
         multiline
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
       />
 
-      <Text style={styles.label}>Estimated Rate</Text>
+      <Text style={[styles.label, { color: colors.text }]}>Estimated Rate</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, { backgroundColor: colors.card, color: colors.text }]}
         placeholder="Enter estimated rate"
         value={rate}
         onChangeText={setRate}
         keyboardType="numeric"
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
       />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.postButton} onPress={handlePost}>
+        <TouchableOpacity style={[styles.postButton, { backgroundColor: colors.primary }]} onPress={handlePost}>
           <Icon name="check" size={15} color="#fff" />
           <Text style={styles.postText}>Publish</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.draftButton} onPress={handleSaveDraft}>
+        <TouchableOpacity style={[styles.draftButton, { backgroundColor: '#8a8a8a' }]} onPress={handleSaveDraft}>
           <Icon name="save" size={15} color="#fff" />
           <Text style={styles.draftText}>Save as Draft</Text>
         </TouchableOpacity>
@@ -73,20 +74,17 @@ const Add = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
     padding: 20,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#00',
     textAlign: 'center',
     marginBottom: 20,
   },
   label: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#333',
     marginBottom: 5,
   },
   input: {
@@ -96,7 +94,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 10,
     marginBottom: 15,
-    backgroundColor: '#fff',
   },
   textArea: {
     height: 100,
@@ -110,16 +107,14 @@ const styles = StyleSheet.create({
   postButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#3e7139',
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 8,
-    marginRight: 10, // Add spacing between buttons
+    marginRight: 10,
   },
   draftButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#8a8a8a', // Grey color for save as draft button
     paddingVertical: 8,
     paddingHorizontal: 12,
     borderRadius: 8,
