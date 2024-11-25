@@ -1,26 +1,29 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import Icon from 'react-native-vector-icons/FontAwesome'; 
+import { useTheme } from '../theme';  // Import the useTheme hook
 
 const DashboardLayout = () => {
+  const { isDarkMode, colors } = useTheme(); // Access dark mode state and colors
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#6b8f71', // Active tab icon and label color
+        tabBarActiveTintColor: colors.primary, // Active tab icon and label color
         tabBarInactiveTintColor: '#000', // Inactive tab icon and label color
         tabBarActiveBackgroundColor: '#e0f2f1', // Active background color for tab
         tabBarInactiveBackgroundColor: '#ffffff', // Inactive background color for tab
         tabBarLabelStyle: {
-          fontSize: 12, // Adjusted font size for better readability
+          fontSize: 12,
         },
         tabBarStyle: {
           marginBottom: 5,
           borderRadius: 10,
-          height: 60, // Adjust height for comfort
-          backgroundColor: '#3e7139', // Set the tab container color here
-          borderTopWidth: 2, // Add border outline
-          borderColor: '#6b8f71', // Border color
+          height: 60,
+          backgroundColor: colors.background, // Adjust background based on the theme
+          borderTopWidth: 2,
+          borderColor: colors.primary, // Adjust border color based on theme
         },
         tabBarShowLabel: true,
       }}
@@ -30,7 +33,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => (
-            <Icon name="home" size={20} color={focused ? '#6b8f71' : '#000'} />
+            <Icon name="home" size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />
@@ -39,7 +42,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Projects',
           tabBarIcon: ({ focused }) => (
-            <Icon name="folder" size={20} color={focused ? '#6b8f71' : '#000'} />
+            <Icon name="folder" size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />
@@ -48,9 +51,9 @@ const DashboardLayout = () => {
         options={{
           title: '',
           tabBarIcon: ({ focused }) => (
-            <Icon name="plus" size={30} color={focused ? '#6b8f71' : '#000'} />
+            <Icon name="plus" size={30} color={focused ? colors.primary : '#000'} />
           ),
-          tabBarLabel: '', // Hide label for the add button
+          tabBarLabel: '',
         }}
       />
       <Tabs.Screen
@@ -58,7 +61,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Inbox',
           tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'envelope' : 'envelope-o'} size={20} color={focused ? '#6b8f71' : '#000'} />
+            <Icon name={focused ? 'envelope' : 'envelope-o'} size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />
@@ -67,7 +70,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'user' : 'user-o'} size={20} color={focused ? '#6b8f71' : '#000'} />
+            <Icon name={focused ? 'user' : 'user-o'} size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />

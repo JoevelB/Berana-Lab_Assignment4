@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { useTheme } from '../theme';  // Import the useTheme hook
 
 const Home = () => {
+  const { colors } = useTheme(); // Access the theme colors
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.logoContainer}>
         <View style={styles.circleContainer}>
           <Image 
@@ -13,8 +16,8 @@ const Home = () => {
           />
         </View>
       </View>
-      <Text style={styles.title}>Welcome to JB Dynamics!</Text>
-      <Text style={styles.description}>
+      <Text style={[styles.title, { color: colors.text }]}>Welcome to JB Dynamics!</Text>
+      <Text style={[styles.description, { color: colors.text }]}>
         JB Dynamics helps programmers find mobile programming jobs and connect with clients. 
         It’s a simple way to showcase skills, work on projects, and be part of a growing tech community.
       </Text>
@@ -25,7 +28,6 @@ const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
     padding: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff', // Adjust based on dark mode
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -55,13 +57,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#333',
     textAlign: 'center',
     marginBottom: 15,
   },
   description: {
     fontSize: 16,
-    color: '#555',
     textAlign: 'center',
     lineHeight: 22,
     marginVertical: 5,
