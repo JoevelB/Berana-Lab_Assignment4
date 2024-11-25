@@ -17,8 +17,8 @@ const Profile = () => {
         </View>
 
         <TouchableOpacity style={[styles.editProfileButton, { backgroundColor: colors.primary }]}>
-          <Text style={[styles.editProfileText, { color: isDarkMode ? '#fff' : colors.buttonText }]}>Edit Profile</Text>
-          <Icon name="edit" size={16} color={isDarkMode ? '#fff' : colors.buttonText} style={styles.editProfileIcon} />
+          <Text style={styles.editProfileText}>Edit Profile</Text>
+          <Icon name="edit" size={16} color="#fff" style={styles.editProfileIcon} />
         </TouchableOpacity>
 
         <View style={styles.statsContainer}>
@@ -62,10 +62,9 @@ const Profile = () => {
             </View>
           </View>
         </View>
-
         <TouchableOpacity style={[styles.editSkillsButton, { backgroundColor: colors.primary }]}>
-            <Text style={[styles.editSkillsText, { color: isDarkMode ? '#fff' : colors.buttonText }]}>Edit/Add Skills</Text>
-            <Icon name="edit" size={16} color={isDarkMode ? '#fff' : colors.buttonText} style={styles.editSkillsIcon} />
+            <Text style={styles.editSkillsText}>Edit/Add Skills</Text>
+            <Icon name="edit" size={16} color="#fff" style={styles.editSkillsIcon} /> 
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
@@ -113,6 +112,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     marginRight: 8,
+    color: '#fff', // Always white
   },
   editProfileIcon: {
     marginLeft: 5,
@@ -176,6 +176,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     marginRight: 8,
+    color: '#fff', // Always white
   },
   editSkillsIcon: {
     marginLeft: 5,

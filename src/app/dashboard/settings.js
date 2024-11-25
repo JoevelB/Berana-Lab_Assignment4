@@ -16,7 +16,7 @@ export default function Settings() {
       <Text style={[styles.sectionLabel, { color: colors.text }]}>Tools and Resources</Text>
       <TouchableOpacity style={[styles.settingOption, { backgroundColor: colors.background }]}>
         <Icon name="cogs" size={18} color={colors.secondary} style={styles.icon} />
-        <Text style={[styles.settingText, { color: colors.text }]}>Account Settings</Text>
+      <Text style={[styles.settingText, { color: colors.text }]}>Account Settings</Text>
       </TouchableOpacity>
       <TouchableOpacity style={[styles.settingOption, { backgroundColor: colors.background }]}>
         <Icon name="key" size={18} color={colors.secondary} style={styles.icon} />

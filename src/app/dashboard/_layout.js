@@ -1,4 +1,3 @@
-// app/dashboard/_layout.js
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { View, Image, Text, StyleSheet } from 'react-native';
@@ -55,7 +54,7 @@ const DrawerLayoutContent = ({ top, bottom }) => {
           />
         </DrawerContentScrollView>
         <View style={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 20 + bottom }}>
-          <Text style={{ color: colors.text }}>© {year} JB Dynamics. All rights reserved.</Text>
+           <Text style={{ color: colors.text }}>© {year} JB Dynamics. All rights reserved.</Text>
         </View>
       </View>
     )}>
