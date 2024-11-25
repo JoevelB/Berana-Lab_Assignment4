@@ -1,49 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function Settings() {
+  const [isDarkMode, setIsDarkMode] = useState(false); // State to track dark mode
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={[styles.container, isDarkMode && styles.darkContainer]}>
       {/* Tools and Resources Section */}
-      <Text style={styles.sectionLabel}>Tools and Resources</Text>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="cogs" size={18} color="#3e7139" style={styles.icon} />
-        <Text style={styles.settingText}>Account Settings</Text>
+      <Text style={[styles.sectionLabel, isDarkMode && styles.darkText]}>Tools and Resources</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="cogs" size={18} color={isDarkMode ? '#dcdcdc' : '#3e7139'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Account Settings</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="key" size={18} color="#3e7139" style={styles.icon} />
-        <Text style={styles.settingText}>Privacy Checkup</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="key" size={18} color={isDarkMode ? '#dcdcdc' : '#3e7139'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Privacy Checkup</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="home" size={18} color="#3e7139" style={styles.icon} />
-        <Text style={styles.settingText}>Supervision</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="home" size={18} color={isDarkMode ? '#dcdcdc' : '#3e7139'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Supervision</Text>
       </TouchableOpacity>
 
       {/* Preferences Section */}
-      <Text style={styles.sectionLabel}>Preferences</Text>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="moon-o" size={18} color="#6b8f71" style={styles.icon} />
-        <Text style={styles.settingText}>Darkmode</Text>
+      <Text style={[styles.sectionLabel, isDarkMode && styles.darkText]}>Preferences</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]} onPress={toggleDarkMode}>
+        <Icon 
+          name={isDarkMode ? "sun-o" : "moon-o"} // Change icon based on dark mode state
+          size={18} 
+          color={isDarkMode ? '#dcdcdc' : '#6b8f71'} 
+          style={styles.icon} 
+        />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Darkmode</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="bell" size={18} color="#6b8f71" style={styles.icon} />
-        <Text style={styles.settingText}>Notification</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="bell" size={18} color={isDarkMode ? '#dcdcdc' : '#6b8f71'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Notification</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="language" size={18} color="#6b8f71" style={styles.icon} />
-        <Text style={styles.settingText}>Language</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="language" size={18} color={isDarkMode ? '#dcdcdc' : '#6b8f71'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Language</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="universal-access" size={18} color="#6b8f71" style={styles.icon} />
-        <Text style={styles.settingText}>Accessibility</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="universal-access" size={18} color={isDarkMode ? '#dcdcdc' : '#6b8f71'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Accessibility</Text>
       </TouchableOpacity>
 
       {/* Legal Policies Section */}
-      <Text style={styles.sectionLabel}>Legal Policies</Text>
-      <TouchableOpacity style={styles.settingOption}>
-        <Icon name="file" size={18} color="#3e7139" style={styles.icon} />
-        <Text style={styles.settingText}>Terms of Service</Text>
+      <Text style={[styles.sectionLabel, isDarkMode && styles.darkText]}>Legal Policies</Text>
+      <TouchableOpacity style={[styles.settingOption, isDarkMode && styles.darkOption]}>
+        <Icon name="file" size={18} color={isDarkMode ? '#dcdcdc' : '#3e7139'} style={styles.icon} />
+        <Text style={[styles.settingText, isDarkMode && styles.darkText]}>Terms of Service</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -54,18 +66,26 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  darkContainer: {
+    backgroundColor: '#333',
+  },
   sectionLabel: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#3e7139',
     marginVertical: 10,
   },
+  darkText: {
+    color: '#dcdcdc', // Dark mode text color
+  },
   settingOption: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
+    // Removed borderBottomWidth and borderBottomColor to eliminate the lines between touchables
+  },
+  darkOption: {
+    backgroundColor: 'transparent', // Removes background color in dark mode
   },
   settingText: {
     fontSize: 16,
