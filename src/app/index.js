@@ -13,7 +13,7 @@ const LogInPage = () => {
     if (username && password) {
       router.push({
         pathname: 'dashboard',
-        params: { username }, // Pass username as a query param
+        params: { username }, 
       });
     } else {
       alert('Please enter your username and password');
