@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { useTheme } from '../theme';  // Import the useTheme hook
+import { useTheme } from '../theme';  
 
 const Home = () => {
-  const { colors } = useTheme(); // Access the theme colors
-
+  const { colors } = useTheme(); 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.logoContainer}>
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff', // Adjust based on dark mode
+    backgroundColor: '#ffffff', 
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
