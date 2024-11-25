@@ -1,94 +1,90 @@
+// app/dashboard/_layout.js
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { ThemeProvider, useTheme } from './theme';  // Import ThemeProvider
 
 export default function DrawerLayout() {
   const router = useRouter();
-  const year = new Date().getFullYear();  
   const { top, bottom } = useSafeAreaInsets();
 
-  // Handle logout action
+  return (
+    <ThemeProvider>  {/* Wrap the app in ThemeProvider */}
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <DrawerLayoutContent top={top} bottom={bottom} />
+      </GestureHandlerRootView>
+    </ThemeProvider>
+  );
+}
+
+const DrawerLayoutContent = ({ top, bottom }) => {
+  const router = useRouter();
+  const { isDarkMode, colors } = useTheme(); // Use theme context for dark mode
+
+  const year = new Date().getFullYear();
+
   const handleLogout = async () => {
     router.replace('/');
   };
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer drawerContent={(props) => (
-        <View style={{ flex: 1 }}>
-          <DrawerContentScrollView
-            {...props}
-            scrollEnabled={true}
-            contentContainerStyle={{ paddingTop: top }}
-          >
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                paddingTop: 50 + top,
-                paddingBottom: 20
-              }}
-            >
-              {/* Avatar container */}
-              <View style={styles.avatarContainer}>
-                <Image source={require('../../assets/AppLogo.png')} style={styles.avatar} />
-              </View>
+    <Drawer drawerContent={(props) => (
+      <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <DrawerContentScrollView
+          {...props}
+          scrollEnabled={true}
+          contentContainerStyle={{ paddingTop: top }}
+        >
+          <View style={{ justifyContent: "center", alignItems: "center", paddingTop: 50 + top, paddingBottom: 20 }}>
+            <View style={styles.avatarContainer}>
+              <Image source={require('../../assets/AppLogo.png')} style={styles.avatar} />
             </View>
-            <DrawerItemList {...props} />
-            <DrawerItem
-              label="Logout"
-              icon={() => (
-                <Icon name='sign-out' color='#6b8f71' size={25} /> // Inlined icon size and color for logout
-              )}
-              labelStyle={{ fontSize: 18 }} // Inlined font size for label
-              onPress={handleLogout}
-            />
-          </DrawerContentScrollView>
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              paddingBottom: 20 + bottom
-            }}
-          >
-            <Text>
-            © {year} JB Dynamics. All rights reserved.
-            </Text>
-          </View> 
+          </View>
+          <DrawerItemList {...props} />
+          <DrawerItem
+            label="Logout"
+            icon={() => (
+              <Icon name='sign-out' color={colors.secondary} size={25} />
+            )}
+            labelStyle={{ fontSize: 18, color: colors.text }}
+            onPress={handleLogout}
+          />
+        </DrawerContentScrollView>
+        <View style={{ justifyContent: 'center', alignItems: 'center', paddingBottom: 20 + bottom }}>
+          <Text style={{ color: colors.text }}>© {year} JB Dynamics. All rights reserved.</Text>
         </View>
-      )}>
-        <Drawer.Screen
-          name="(tabs)" // This is the name of the page and must match the URL from the root
-          options={{
-            drawerLabel: 'Home',
-            title: 'JB Dynamics',
-            drawerIcon: () => (
-              <Icon name='home' size={25} color='#6b8f71' /> // Inlined icon size and color for Home
-            ),
-            drawerLabelStyle: { fontSize: 18 }, // Inlined font size for label
-          }}
-        />
-        <Drawer.Screen
-          name="settings" // This is the name of the page and must match the URL from the root
-          options={{
-            drawerLabel: 'Settings',
-            title: 'Settings',
-            drawerIcon: () => (
-              <Icon name='cogs' size={25} color='#3e7139' /> // Inlined icon size and color for Settings
-            ),
-            drawerLabelStyle: { fontSize: 18 }, // Inlined font size for label
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+      </View>
+    )}>
+      <Drawer.Screen
+        name="(tabs)"
+        options={{
+          drawerLabel: 'Home',
+          title: 'JB Dynamics',
+          drawerIcon: () => (
+            <Icon name='home' size={25} color={colors.secondary} />
+          ),
+          drawerLabelStyle: { fontSize: 18, color: colors.text },
+        }}
+      />
+      <Drawer.Screen
+        name="settings"
+        options={{
+          drawerLabel: 'Settings',
+          title: 'Settings',
+          drawerIcon: () => (
+            <Icon name='cogs' size={25} color={colors.secondary} />
+          ),
+          drawerLabelStyle: { fontSize: 18, color: colors.text },
+        }}
+      />
+    </Drawer>
   );
-}
+};
 
-// Avatar styling similar to the one in the LogInPage
 const styles = StyleSheet.create({
   avatarContainer: {
     width: 150,
