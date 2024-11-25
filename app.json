@@ -26,6 +26,8 @@
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+
+    "_comment": ""
   }
 }
