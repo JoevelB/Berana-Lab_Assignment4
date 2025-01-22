@@ -1,11 +1,10 @@
-// app/screens/Project.js
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import FontAwesome icons
-import { useTheme } from '../theme';  // Import useTheme hook
+import Icon from 'react-native-vector-icons/FontAwesome'; 
+import { useTheme } from '../theme';  
 
 const Project = () => {
-  const { isDarkMode, colors } = useTheme();  // Get theme and colors
+  const { isDarkMode, colors } = useTheme();  
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>

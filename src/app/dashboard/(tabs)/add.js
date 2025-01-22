@@ -1,13 +1,13 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useTheme } from '../theme';  // Import the useTheme hook
+import { useTheme } from '../theme';  
 
 const Add = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [rate, setRate] = useState('');
-  const { isDarkMode, colors } = useTheme();  // Access dark mode state and colors
+  const { isDarkMode, colors } = useTheme();  
 
   const handlePost = () => {
     console.log('Project Posted:', { title, description, rate });
@@ -33,7 +33,7 @@ const Add = () => {
         placeholder="Enter project title"
         value={title}
         onChangeText={setTitle}
-        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} 
       />
 
       <Text style={[styles.label, { color: colors.text }]}>Project Description</Text>
@@ -43,7 +43,7 @@ const Add = () => {
         value={description}
         onChangeText={setDescription}
         multiline
-        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} 
       />
 
       <Text style={[styles.label, { color: colors.text }]}>Estimated Rate</Text>
@@ -53,7 +53,7 @@ const Add = () => {
         value={rate}
         onChangeText={setRate}
         keyboardType="numeric"
-        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} // Adjust placeholder color based on theme
+        placeholderTextColor={isDarkMode ? '#bbb' : '#888'} 
       />
 
       <View style={styles.buttonContainer}>

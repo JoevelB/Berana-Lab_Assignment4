@@ -5,14 +5,14 @@ import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navi
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { ThemeProvider, useTheme } from './theme';  // Import ThemeProvider
+import { ThemeProvider, useTheme } from './theme';  
 
 export default function DrawerLayout() {
   const router = useRouter();
   const { top, bottom } = useSafeAreaInsets();
 
   return (
-    <ThemeProvider>  {/* Wrap the app in ThemeProvider */}
+    <ThemeProvider> 
       <GestureHandlerRootView style={{ flex: 1 }}>
         <DrawerLayoutContent top={top} bottom={bottom} />
       </GestureHandlerRootView>
@@ -22,7 +22,7 @@ export default function DrawerLayout() {
 
 const DrawerLayoutContent = ({ top, bottom }) => {
   const router = useRouter();
-  const { isDarkMode, colors } = useTheme(); // Use theme context for dark mode
+  const { isDarkMode, colors } = useTheme(); 
 
   const year = new Date().getFullYear();
 

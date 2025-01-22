@@ -1,19 +1,19 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
-import { useTheme } from '../theme';  // Import the useTheme hook
+import { useTheme } from '../theme';  
 
 const DashboardLayout = () => {
-  const { isDarkMode, colors } = useTheme(); // Access dark mode state and colors
+  const { isDarkMode, colors } = useTheme(); 
 
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.primary, // Active tab icon and label color
-        tabBarInactiveTintColor: '#000', // Inactive tab icon and label color
-        tabBarActiveBackgroundColor: '#e0f2f1', // Active background color for tab
-        tabBarInactiveBackgroundColor: '#ffffff', // Inactive background color for tab
+        tabBarActiveTintColor: colors.primary, 
+        tabBarInactiveTintColor: '#000', 
+        tabBarActiveBackgroundColor: '#e0f2f1', 
+        tabBarInactiveBackgroundColor: '#ffffff', 
         tabBarLabelStyle: {
           fontSize: 12,
         },
@@ -61,7 +61,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Inbox',
           tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'envelope' : 'envelope-o'} size={20} color={focused ? colors.primary : '#000'} />
+            <Icon name="envelope" size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />
@@ -70,7 +70,7 @@ const DashboardLayout = () => {
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => (
-            <Icon name={focused ? 'user' : 'user-o'} size={20} color={focused ? colors.primary : '#000'} />
+            <Icon name="user" size={20} color={focused ? colors.primary : '#000'} />
           ),
         }}
       />

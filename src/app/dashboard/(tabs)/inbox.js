@@ -1,4 +1,3 @@
-// app/screens/Inbox.js
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons'; 
@@ -7,7 +6,7 @@ import { useTheme } from '../theme';
 const Inbox = () => {
   const { isDarkMode, colors } = useTheme();  
 
-  // Sample notification message
+  
   const notifications = [
     { id: '1', name: 'Gabriel Felicitas', message: 'Good Morning Mr. Berana! Gusto kaayo ko magtinabangay ta sa BuyNaBay project. Naa kay panahon?' },
     { id: '2', name: 'John Lloyd Morden', message: 'Good Day Sir! Pwede pa magg-apil sa BuyNaBay project. When ta start?' },

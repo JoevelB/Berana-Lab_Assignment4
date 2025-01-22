@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "demo",
+    "name": "JB Dynamics",
     "slug": "demo",
-    "scheme":"com.demo.app",
+    "scheme": "com.JBDynamics.app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/AppLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/AppLogo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,18 +16,25 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.JBDynamics",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/AppLogo.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/AppLogo.png"
     },
     "plugins": [
       "expo-router"
     ],
-
-    "_comment": ""
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8399cd42-ae7c-42fc-bd0f-0140e412bb89"
+      }
+    }
   }
 }

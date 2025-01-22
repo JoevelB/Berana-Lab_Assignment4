@@ -1,4 +1,4 @@
-// app/recover.js
+
 import React from 'react';
 import { SafeAreaView, Text, StyleSheet, View, Image } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
